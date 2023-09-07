@@ -1,6 +1,4 @@
-# QuanLyQuanCafe
 
-Tên nhóm: nhóm ....
 Thành viên nhóm:
   1. Nguyễn Tấn Thạo -2001200514(Nhóm trưởng)
   2. Lê Hoàng Công -2001207148
@@ -8,12 +6,18 @@ Thành viên nhóm:
 
 Dự án:
 Tên dự án: Quản lý quán cà phê.
+
 Mô tả dự án: 
-"APP:
-Bán hàng,Nhập hàng,Quản lí (menu, nhân viên ,bàn,kho),thống kê thu chi
-… Danh mục
-WEB: Đặt bàn online + Tin tức
+APP:
+-Bán hàng,Nhập hàng,Quản lí (menu, nhân viên ,bàn,kho),thống kê thu chi
+-Danh mục
+
+WEB: 
+-Đặt bàn online + Tin tức
+
 AI:Cảnh báo kiểm soát lưu lượng sản phẩm không phù hợp(Chống gian lận )
+
+PHÂN CÔNG NHIỆM VỤ
 
 Đánh giá dự án:
 Ưu điểm của dự án:
