@@ -2,9 +2,9 @@
 
 Tên nhóm: nhóm ....
 Thành viên nhóm:
-  1. Nguyễn Tấn Thạo - Nhóm trưởng
-  2. Lê Hoàng Công -Thành viên
-  3. Lê Hoàng Nhất Thống - Thành viên
+  1. Nguyễn Tấn Thạo -2001200514(Nhóm trưởng)
+  2. Lê Hoàng Công -2001207148
+  3. Lê Hoàng Nhất Thống -2001190840
 
 Dự án:
 Tên dự án: Quản lý quán cà phê.
