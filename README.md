@@ -18,7 +18,8 @@ WEB:
 AI:Cảnh báo kiểm soát lưu lượng sản phẩm không phù hợp(Chống gian lận )
 
 PHÂN CÔNG NHIỆM VỤ
-
+Nguyễn Tấn Thạo - Xây dựng web
+Lê Hoàng Công&Lê Hoàng Nhất Thống - Xây dựng app
 Đánh giá dự án:
 Ưu điểm của dự án:
 
