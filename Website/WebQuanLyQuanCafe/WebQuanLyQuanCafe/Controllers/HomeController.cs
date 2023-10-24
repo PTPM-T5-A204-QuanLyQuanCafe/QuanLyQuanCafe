@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebQuanLyQuanCafe.Models;
 
 namespace WebQuanLyQuanCafe.Controllers
 {
     public class HomeController : Controller
     {
+        DB_CAFFEDataContext data = new DB_CAFFEDataContext();
+        public ActionResult Loai_caffe()
+        {
+            var load = (from item in data.MENUs select item).ToList();
+            return View(load);
+        }
+      
         public ActionResult Index()
         {
             return View();

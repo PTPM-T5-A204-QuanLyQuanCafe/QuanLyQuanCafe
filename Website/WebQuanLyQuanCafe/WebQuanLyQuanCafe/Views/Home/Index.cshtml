@@ -1,31 +1,25 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<form action="xu-ly-don-dat-ban.php" method="post">
+    <label for="ten">Tên của bạn:</label>
+    <input type="text" id="ten" name="ten" required><br><br>
+
+    <label for="dien-thoai">Số điện thoại:</label>
+    <input type="tel" id="dien-thoai" name="dien-thoai" required><br><br>
+
+    <label for="so-luong-nguoi">Số lượng người:</label>
+    <input type="number" id="so-luong-nguoi" name="so-luong-nguoi" required><br><br>
+
+    <label for="thoi-gian">Thời gian đặt bàn:</label>
+    <input type="datetime-local" id="thoi-gian" name="thoi-gian" required><br><br>
+
+    <label for="yeu-cau-khac">Ý kiến đặc biệt (nếu có):</label>
+    <textarea id="yeu-cau-khac" name="yeu-cau-khac" rows="4" cols="50"></textarea><br><br>
+
+    <input type="submit" value="Gửi đặt bàn">
+</form>

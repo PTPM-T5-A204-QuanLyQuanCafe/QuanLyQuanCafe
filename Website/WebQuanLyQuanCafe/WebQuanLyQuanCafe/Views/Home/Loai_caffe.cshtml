@@ -1,0 +1,53 @@
+﻿@model IEnumerable<WebQuanLyQuanCafe.Models.MENU>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+<h3>
+    COFFEE
+</h3>
+<br />
+<p>
+
+    Vietnam is the world’s second largest producer of coffee. As a Vietnamese brand, Highlands Coffee hand selects and roasts only the finest aromatic Arabica and bold Robusta beans for our signature blends.
+</p>
+
+<h3>
+    PREEZE
+</h3>
+<br />
+<p>
+
+    Our delicious ice-blended beverages are made from premium Vietnamese ingredients and have a range of options with coffee and also without coffee.
+</p>
+
+<h3>
+    TEA
+</h3>
+<br />
+<p>
+
+    Building on Vietnam’s rich tea heritage, we select only the finest teas grown in the highlands regions of Vietnam to create delicious, modern tea beverages that include natural fruits and toppings. Served with or without milk.
+</p>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 m-4">
+                <div class="card">
+                    <img src="~/Content/Anh/@item.ANH" class="card-img-top" alt="Product 1">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.TENSP</h5>
+                        <p class="card-text">@item.GIA</p>
+
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+

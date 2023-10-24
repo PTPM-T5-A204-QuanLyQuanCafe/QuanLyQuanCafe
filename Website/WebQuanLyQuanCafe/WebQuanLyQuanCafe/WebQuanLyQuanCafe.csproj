@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +44,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -164,19 +167,96 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\DB_CAFFE.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DB_CAFFE.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Anh\AMERICANO_NONG.png" />
+    <Content Include="Content\Anh\BAC_XIU.png" />
+    <Content Include="Content\Anh\BANHCHUOI.png" />
+    <Content Include="Content\Anh\CAPPUCINO.png" />
+    <Content Include="Content\Anh\CARAMELPHOMAI.png" />
+    <Content Include="Content\Anh\CARAMEL_FREEZE_PHINDI.png" />
+    <Content Include="Content\Anh\CARAMEL_MACCHIATTO.png" />
+    <Content Include="Content\Anh\CLASSIC_FREEZE_PHINDI.png" />
+    <Content Include="Content\Anh\COOKIES_FREEZE.png" />
+    <Content Include="Content\Anh\EXPRESSO.png" />
+    <Content Include="Content\Anh\FREEZE_CHOCO.png" />
+    <Content Include="Content\Anh\FREEZE_TRA_XANH.png" />
+    <Content Include="Content\Anh\LATTE_1.png" />
+    <Content Include="Content\Anh\Logo.PNG" />
+    <Content Include="Content\Anh\MOCHA.png" />
+    <Content Include="Content\Anh\MOUSSECACAO.png" />
+    <Content Include="Content\Anh\MOUSSEDAO.png" />
+    <Content Include="Content\Anh\PHINDI_CHOCO.png" />
+    <Content Include="Content\Anh\PHINDI_KEM_SUA.png" />
+    <Content Include="Content\Anh\Phindi_Pitaschio.png" />
+    <Content Include="Content\Anh\PHIN_DEN_DA.png" />
+    <Content Include="Content\Anh\PHIN_DEN_NONG.png" />
+    <Content Include="Content\Anh\PHIN_SUADA.png" />
+    <Content Include="Content\Anh\PHIN_SUA_NONG.png" />
+    <Content Include="Content\Anh\PHOMAICAPHE.png" />
+    <Content Include="Content\Anh\PHOMAICHANHDAY.png" />
+    <Content Include="Content\Anh\PHOMAITRAXANH.png" />
+    <Content Include="Content\Anh\SOCOLAHL.png" />
+    <Content Include="Content\Anh\TIRAMISU.png" />
+    <Content Include="Content\Anh\TRA_SEN_VANG_CU_NANG.png" />
+    <Content Include="Content\Anh\TRA_TACH_VAI.png" />
+    <Content Include="Content\Anh\TRA_THANH_DAO-08.png" />
+    <Content Include="Content\Anh\TRA_THANH_DAO-09.png" />
+    <Content Include="Content\Anh\TRA_XANH_DAU_DO.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\MyClass\css\bootstrap-icons.css" />
+    <Content Include="Content\MyClass\css\bootstrap.min.css" />
+    <Content Include="Content\MyClass\css\slick.css" />
+    <Content Include="Content\MyClass\css\tooplate-little-fashion.css" />
+    <Content Include="Content\MyClass\images\cody-lannom-G95AReIh_Ko-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\header\businesspeople-meeting-office-working.jpg" />
+    <Content Include="Content\MyClass\images\header\positive-european-woman-has-break-after-work.jpg" />
+    <Content Include="Content\MyClass\images\people\beautiful-woman-face-portrait-brown-background.jpeg" />
+    <Content Include="Content\MyClass\images\people\portrait-british-woman.jpeg" />
+    <Content Include="Content\MyClass\images\people\senior-man-wearing-white-face-mask-covid-19-campaign-with-design-space.jpeg" />
+    <Content Include="Content\MyClass\images\people\woman-wearing-mask-face-closeup-covid-19-green-background.jpeg" />
+    <Content Include="Content\MyClass\images\pim-chu-z6NZ76_UTDI-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\product\anis-m-WnVrO-DvxcE-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\product\evan-mcdougall-qnh1odlqOmk-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\product\jordan-nix-CkCUvwMXAac-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\product\nature-zen-3Dn1BZZv3m8-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\product\quokkabottles-kFc1_G1GvKA-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\product\team-fredi-8HRKoay8VJE-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\retail-shop-owner-mask-social-distancing-shopping.jpg" />
+    <Content Include="Content\MyClass\images\servicescape-incorporated-_48JSlVLX6g-unsplash.jpeg" />
+    <Content Include="Content\MyClass\images\slideshow\medium-shot-business-women-high-five.jpeg" />
+    <Content Include="Content\MyClass\images\slideshow\team-meeting-renewable-energy-project.jpeg" />
+    <Content Include="Content\MyClass\images\slideshow\two-business-partners-working-together-office-computer.jpeg" />
+    <Content Include="Content\MyClass\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\MyClass\js\custom.js" />
+    <Content Include="Content\MyClass\js\Headroom.js" />
+    <Content Include="Content\MyClass\js\jQuery.headroom.js" />
+    <Content Include="Content\MyClass\js\jquery.min.js" />
+    <Content Include="Content\MyClass\js\slick.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\MyClass\fonts\bootstrap-icons.woff" />
+    <Content Include="Content\MyClass\fonts\bootstrap-icons.woff2" />
+    <Content Include="Models\DB_CAFFE.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DB_CAFFE.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\DB_CAFFE.dbml.layout">
+      <DependentUpon>DB_CAFFE.dbml</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -189,6 +269,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Loai_caffe.cshtml" />
+    <None Include="Views\Shared\index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -202,7 +285,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -214,6 +296,7 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\TrangChu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -224,6 +307,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
