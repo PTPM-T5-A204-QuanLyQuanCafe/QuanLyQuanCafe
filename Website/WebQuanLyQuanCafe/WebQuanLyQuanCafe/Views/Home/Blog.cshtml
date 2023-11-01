@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebQuanLyQuanCafe.Models.CONTENT>
+@{
+    ViewBag.Title = "Blog";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+@foreach (var i in Model)
+{
+<div class="w-100 m-auto mt-5">
+    <img class="w-25" src="~/Content/Anh/Contents/@i.ANH"/>
+    <h3>@i.TIEUDE</h3>
+    <small>@i.NGAYDANG</small>
+
+</div>
+}
+

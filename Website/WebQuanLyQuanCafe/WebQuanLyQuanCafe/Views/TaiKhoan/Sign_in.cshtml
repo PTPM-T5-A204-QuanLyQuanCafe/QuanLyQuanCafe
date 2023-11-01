@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "Sign_in";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+<div class="col-lg-8 mx-auto col-12">
+
+    <h1 class="hero-title text-center mb-5">Sign In</h1>
+    <h2 class="text-danger text-center">@ViewBag.thongbao</h2>
+    <div class="row">
+        <div class="col-lg-8 col-11 mx-auto">
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+
+                <form role="form" method="post">
+
+                    <div class="form-floating mb-4 p-0">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email address" required>
+
+                        <label for="email">Email address</label><p class="text-danger">@ViewData["Loi1"]</p>
+                    </div>
+
+                    <div class="form-floating p-0">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+
+                        <label for="password">Password</label><p> @ViewData["Loi1"]</p>
+                    </div>
+
+                    <button type="submit" class="btn custom-btn form-control mt-4 mb-3">
+                        Sign in
+                    </button>
+
+                    <p class="text-center">Don’t have an account? @Html.ActionLink("Sign up", "Sign_up", "TaiKhoan")</p>
+
+                </form>
+              
+            }
+        </div>
+    </div>
+
+</div>
+<script>
+    @if (ViewBag.LoginSuccess != null)
+    {
+       <text>
+            // Hiển thị alert và tự động đóng sau 2 giây
+            var message = '@ViewBag.LoginSuccess';
+            alert(message);
+            setTimeout(function() {
+                var alertBox = document.querySelector(".alert");
+                if (alertBox) {
+                    alertBox.style.display = "none";
+                }
+            }, 2000); // 2000 milliseconds (2 seconds)
+        </text>
+    }
+
+</script>
+
+

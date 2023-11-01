@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebQuanLyQuanCafe.Models.PHIEUDATBAN>
+@{
+    ViewBag.Title = "DS_LSDat";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+<div style="width:100%;margin:auto;margin-top:5px">
+    <h3 class="text-danger text-center">Lịch sử</h3>
+   
+    <table class="table table-hover">
+
+
+        <thead class="table-info">
+            <tr>
+                <th>Mã đơn</th>
+                <th>Ngày đặt</th>
+                <th>Giờ đến</th>
+                <th>Số người</th>
+                <th>Tình trạng</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                DateTime ngaylap = (DateTime)item.NGAYLAP;
+
+                DateTime now = DateTime.Now;
+
+            
+                    <tr>
+                        <td>@item.MAPHIEUDAT</td>
+                        <td>@item.NGAYLAP</td>
+                        <td>@item.GIODEN</td>
+                        <td>@item.SONGUOI</td>
+                        <td>@item.TINHTRANG</td>
+                    </tr>
+             
+            }
+        </tbody>
+
+
+    </table>
+
+</div>
+

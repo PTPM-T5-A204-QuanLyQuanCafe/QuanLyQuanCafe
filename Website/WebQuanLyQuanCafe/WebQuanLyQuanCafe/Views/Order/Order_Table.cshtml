@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Order_Table";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+
+
+<div style="width:300px;margin:auto">
+    <h1>Đặt Bàn</h1>
+    <form method="post" style=" width:100%; margin: 0 auto; background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0px 0px 5px 0px #ccc; text-align: center;">
+        <label for="gioden">Giờ Đến:</label>
+        <input type="time" name="gioDen" style=" width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" required>
+
+        <label for="songuoi">Số Người:</label>
+        <input type="number" style=" width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;" name="soNguoi" min="1" required>
+        <div class="text-center">
+            <input type="submit" value="Xác nhận đặt bàn">
+        </div>
+
+    </form>
+</div>
+<script>
+    @if (ViewBag.thongbao != null)
+    {
+       <text>
+            // Hiển thị alert và tự động đóng sau 2 giây
+            var message = '@ViewBag.thongbao';
+            alert(message);
+            setTimeout(function() {
+                var alertBox = document.querySelector(".alert");
+                if (alertBox) {
+                    alertBox.style.display = "none";
+                }
+            }, 2000); 
+        </text>
+    }
+
+</script>
+

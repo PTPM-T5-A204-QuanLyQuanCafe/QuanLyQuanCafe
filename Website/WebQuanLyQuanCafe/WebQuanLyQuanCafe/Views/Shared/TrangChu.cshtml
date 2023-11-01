@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="css/slick.css" />
 
     <link href="~/Content/MyClass/css/tooplate-little-fashion.css" rel="stylesheet">
+    <link href="~/Content/MyClass/css/Thao.css" rel="stylesheet" />
     <!--
 
     Tooplate 2127 Little Fashion
@@ -50,7 +51,7 @@
                 <a class="navbar-brand" href="index.html">
                     <strong><span>Shop</span> Coffe</strong>
                 </a>
-                <a><img style="width:100px;height:60px"  src="~/Content/Anh/Logo.PNG"/></a>
+                <a><img style="width:100px;height:60px" src="~/Content/Anh/Logo.PNG" /></a>
                 <div class="d-lg-none">
                     <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
 
@@ -60,41 +61,89 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link active">@Html.ActionLink("Trang chủ", "Loai_caffe", "Home")</a>
+                            <a class="nav-link active">@Html.ActionLink("Trang chủ", "HienThiMenu", "Home")</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">@Html.ActionLink("Trang chủ", "Loai_caffe", "Home")</a>
+                            <a class="nav-link" href="about.html">@Html.ActionLink("Blog", "Blog", "Home")</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="products.html">@Html.ActionLink("Trang chủ", "Loai_caffe", "Home")</a>
+                            <a class="nav-link" href="products.html">@Html.ActionLink("Menu", "", "Home")</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link">@Html.ActionLink("Đặt bàn", "Index", "Home")</a>
+                            <a class="nav-link">@Html.ActionLink("Đặt bàn", "Order_Table", "Order")</a>
                         </li>
 
-                        
+
                     </ul>
 
-                    <div class="d-none d-lg-block">
-                        <a href="sign-in.html" class="bi-person custom-icon me-3"></a>
+                    <div class="d-none d-lg-block d-inline">
 
-                        <a href="product-detail.html" class="bi-bag custom-icon"></a>
+                        @if (Session["Taikhoan"] != null)
+                        {
+                            
+                            <p style="float:left" class="m-2">@Session["Ten"]</p>
+
+                        }
+                    <div class="dropdown">
+                        <a class="bi-person custom-icon me-3 dropdown"></a>
+                        <div class="dropdown-content">
+                            @*<div>
+            <a href="@Url.Action("Register", "TaiKhoan")">Register</a>
+
+        </div>*@
+                            @if (Session["Taikhoan"] != null)
+                            {
+                                <div>
+                                    <a href="@Url.Action("Log_out", "TaiKhoan")">Log out</a>
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div>
+                                    <a href="@Url.Action("Sign_in","TaiKhoan")">Log in</a>
+
+                                </div>
+                            }
+
+
+
+
+                            <div>
+                                <a href="@Url.Action("Sign_up", "TaiKhoan")">Register</a>
+
+                            </div>
+
+                        </div>
+                       
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="@Url.Action("DS_DonDat","Order")" class="bi-bag custom-icon"></a>
+                        <div class="dropdown-content">
+                            <div>
+                                <a href="@Url.Action("DS_LSDat","Order")">Lịch sử</a>
+                            </div>
+                        </div>
+                    </div>
+
+                      
                     </div>
                 </div>
             </div>
         </nav>
 
 
-        <section class="about section-padding" >
+        <section class="about section-padding">
             <div class="container">
                 <div class="row">
-                  
-                  
 
-                  
+
+
+
 
 
                     @RenderBody()
@@ -107,8 +156,8 @@
 
     </main>
 
-    <footer class="site-footer"  style="background-color: #E9E9E9">
-        <div class="container" >
+    <footer class="site-footer" style="background-color: #E9E9E9">
+        <div class="container">
             <div class="row">
 
                 <div class="col-lg-3 col-10 me-auto mb-4">
@@ -161,6 +210,15 @@
     <script src="~/Content/MyClass/js/jQuery.headroom.js"></script>
     <script src="~/Content/MyClass/js/slick.min.js"></script>
     <script src="~/Content/MyClass/js/custom.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/Content/MyClass/js/provin.js"></script>
+    <script>
+        function myFunction() {
+            alert("Đăng nhập thành công");
+        }
+    </script>
 
 </body>
 </html>

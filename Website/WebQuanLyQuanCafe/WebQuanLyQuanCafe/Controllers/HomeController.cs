@@ -10,7 +10,7 @@ namespace WebQuanLyQuanCafe.Controllers
     public class HomeController : Controller
     {
         DB_CAFFEDataContext data = new DB_CAFFEDataContext();
-        public ActionResult Loai_caffe()
+        public ActionResult HienThiMenu()
         {
             var load = (from item in data.MENUs select item).ToList();
             return View(load);
@@ -20,7 +20,7 @@ namespace WebQuanLyQuanCafe.Controllers
         {
             return View();
         }
-
+      
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -33,6 +33,11 @@ namespace WebQuanLyQuanCafe.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult Blog()
+        {
+            var ct = from item in data.CONTENTs select item;
+            return View(ct.ToList());
         }
     }
 }

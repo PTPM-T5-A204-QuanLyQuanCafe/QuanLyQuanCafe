@@ -1,0 +1,52 @@
+﻿@using WebQuanLyQuanCafe.Models;
+@model List<DonDat>
+@{
+    ViewBag.Title = "DS_DonDat";
+    Layout = "~/Views/Shared/TrangChu.cshtml";
+}
+@if (ViewBag.thongbao!="0")
+{
+<div class="m-auto text-center">
+    <h3>Xác nhận đơn đặt bàn</h3>
+</div>
+<div style="width:100%;margin:auto">
+    <table class="table table-hover">
+     
+
+            <thead>
+                <tr>
+                    <th>Mã đơn</th>
+                    <th>Ngày đặt</th>
+                    <th>Giờ đến</th>
+                    <th>Số người</th>
+                    <th>Tình trạng</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Maphieudat</td>
+                        <td>@item.Ngaylap</td>
+                        <td>@item.Gioden</td>
+                        <td>@item.Songuoi</td>
+                        <td>@item.Tinhtrang</td>
+                    </tr>                    
+                }
+
+                </tbody>
+
+        
+    </table>
+        <div class="m-auto text-center">
+            <button type="button" class="btn btn-info border-2">@Html.ActionLink("Xác nhận", "XacNhan", "Order")</button>
+        </div>
+    </div>
+}
+else
+            {
+<div class="m-auto text-center">
+    <h3 class="text-danger">Không có đơn đặt nào cần xác nhận</h3>
+</div>
+              
+            }
