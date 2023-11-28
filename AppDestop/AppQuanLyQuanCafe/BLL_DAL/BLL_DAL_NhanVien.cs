@@ -1,4 +1,5 @@
-﻿using BLL_DAL.DTO;
+﻿using AppQuanLyQuanCafe;
+using BLL_DAL.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace BLL_DAL
     public class BLL_DAL_NhanVien
     {
         QL_COFFEDataContext ql = new QL_COFFEDataContext();
+        MaHoaPassword mh = new MaHoaPassword();
         public BLL_DAL_NhanVien()
         {
 
@@ -54,7 +56,18 @@ namespace BLL_DAL
             nhanvien.NGAYSINH = nv.NGAYSINH;
             nhanvien.TINHTRANG = nv.TINHTRANG;
             ql.SubmitChanges();
+        }
+        public NHANVIEN DangNhap(string user, string pass)
+        {
+            string password = mh.Encrypt(pass);
 
+            NHANVIEN kt = ql.NHANVIENs
+                .Where(nv => nv.SDT == user && nv.PASSNV == password)
+                .FirstOrDefault();
+            if (kt != null)
+                return kt;
+            else
+                return null;
         }
     }
 }

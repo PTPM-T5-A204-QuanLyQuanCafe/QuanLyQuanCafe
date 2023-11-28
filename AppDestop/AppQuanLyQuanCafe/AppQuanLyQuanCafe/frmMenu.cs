@@ -23,6 +23,7 @@ namespace AppQuanLyQuanCafe
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            CenterToScreen();
             loadCBB();
             loadDataGridView();
         }
@@ -191,7 +192,8 @@ namespace AppQuanLyQuanCafe
                     picSanPham.Image = Image.FromFile(duongDanDayDu);
                 }
             }
-        } 
+        }
+
               
         
     }

@@ -14,6 +14,7 @@ namespace AppQuanLyQuanCafe
     public partial class frmNhanVien : Form
     {
         BLL_DAL_NhanVien bll_nv = new BLL_DAL_NhanVien();
+        MaHoaPassword mh = new MaHoaPassword();
         public frmNhanVien()
         {
             InitializeComponent();
@@ -36,9 +37,10 @@ namespace AppQuanLyQuanCafe
         {
             if(KTNhapLieu())
             {
-                NHANVIEN nv = new NHANVIEN();
+                NHANVIEN nv = new NHANVIEN();                
                 nv.EMAIL = txtEmail.Text;
-                nv.PASSNV = txtMatkhau.Text;
+                string passmahoa = mh.Encrypt(txtMatkhau.Text);
+                nv.PASSNV = passmahoa;
                 nv.HOTEN = txtHoTen.Text;
                 nv.GIOITINH = cbbGioiTinh.SelectedItem.ToString();
                 nv.SDT = txtSDT.Text;
@@ -68,7 +70,8 @@ namespace AppQuanLyQuanCafe
                 string sdt = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 NHANVIEN nv = new NHANVIEN();
                 nv.EMAIL = txtEmail.Text;
-                nv.PASSNV = txtMatkhau.Text;
+                string passmahoa = mh.Encrypt(txtMatkhau.Text);
+                nv.PASSNV = passmahoa;
                 nv.HOTEN = txtHoTen.Text;
                 nv.GIOITINH = cbbGioiTinh.SelectedItem.ToString();
                 nv.NGAYSINH = dateNgaySinh.Value;
@@ -151,7 +154,8 @@ namespace AppQuanLyQuanCafe
                     btnXoa.Enabled = true;
                     btnSua.Enabled = true;
                     txtSDT.Text = row.Cells[0].Value.ToString();
-                    txtMatkhau.Text = row.Cells[7].Value.ToString();
+                    string passmh = mh.Decrypt(row.Cells[7].Value.ToString());
+                    txtMatkhau.Text = passmh;
                     txtHoTen.Text = row.Cells[2].Value.ToString();
                     cbbGioiTinh.SelectedItem = row.Cells[3].Value.ToString();
                     dateNgaySinh.Value = Convert.ToDateTime(row.Cells[4].Value);

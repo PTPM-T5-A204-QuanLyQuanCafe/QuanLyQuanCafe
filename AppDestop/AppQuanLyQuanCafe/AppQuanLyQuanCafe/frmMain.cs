@@ -12,6 +12,14 @@ namespace AppQuanLyQuanCafe
 {
     public partial class frmMain : Form
     {
+        Boolean laAdmin;
+
+        public Boolean LaAdmin
+        {
+            get { return laAdmin; }
+            set { laAdmin = value; }
+        }
+
         public frmMain()
         {
             InitializeComponent();
@@ -44,6 +52,16 @@ namespace AppQuanLyQuanCafe
         {
             frmKho frm = new frmKho();
             frm.Show();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            CenterToScreen();
+            if (LaAdmin != true)
+            {
+               tStripNhanVien.Enabled = false;
+               tStripMenu.Enabled = false;
+            }
         }
     }
 }
