@@ -69,5 +69,14 @@ namespace BLL_DAL
             else
                 return null;
         }
+        public bool KiemTraKhoaChinhNhanVien(string sdt)
+        {
+            return ql.NHANVIENs.Any(nv => nv.SDT == sdt);
+        }
+
+        public bool KiemTraKhoaNgoaiNhanVien(string sdt)
+        {
+            return ql.HOADONs.Any(hd => hd.SDT == sdt) || ql.PHIEUDATBANs.Any(pdb => pdb.SDTKH == sdt);
+        }
     }
 }

@@ -58,9 +58,12 @@ namespace AppQuanLyQuanCafe
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string sdt = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            bll_nv.xoaNhanVien(sdt);
-            loadDataGridView();
+            if (MessageBox.Show("Bạn có muốn xoá không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes && !bll_nv.KiemTraKhoaNgoaiNhanVien(txtSDT.Text))
+            {
+                string sdt = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                bll_nv.xoaNhanVien(sdt);
+                loadDataGridView();
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -140,6 +143,12 @@ namespace AppQuanLyQuanCafe
             {
                 MessageBox.Show("Địa chỉ không được để trống");
                 txtDiaChi.Focus();
+                return false;
+            }
+            if (bll_nv.KiemTraKhoaChinhNhanVien(txtSDT.Text))
+            {
+                MessageBox.Show("Số điện thoại không được để trống");
+                txtSDT.Focus();
                 return false;
             }
             return true;

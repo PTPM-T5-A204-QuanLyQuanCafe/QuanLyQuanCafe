@@ -37,7 +37,9 @@
             this.danhMụcMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.nghiệpVụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tStripNhapHang = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sTripTKHangTon = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,15 +113,33 @@
             // 
             // nghiệpVụToolStripMenuItem
             // 
+            this.nghiệpVụToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tStripNhapHang});
             this.nghiệpVụToolStripMenuItem.Name = "nghiệpVụToolStripMenuItem";
             this.nghiệpVụToolStripMenuItem.Size = new System.Drawing.Size(106, 29);
             this.nghiệpVụToolStripMenuItem.Text = "Nghiệp vụ";
             // 
+            // tStripNhapHang
+            // 
+            this.tStripNhapHang.Name = "tStripNhapHang";
+            this.tStripNhapHang.Size = new System.Drawing.Size(210, 30);
+            this.tStripNhapHang.Text = "Nhập hàng";
+            this.tStripNhapHang.Click += new System.EventHandler(this.tStripNhapHang_Click);
+            // 
             // thốngKêToolStripMenuItem
             // 
+            this.thốngKêToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sTripTKHangTon});
             this.thốngKêToolStripMenuItem.Name = "thốngKêToolStripMenuItem";
             this.thốngKêToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             this.thốngKêToolStripMenuItem.Text = "Thống kê";
+            // 
+            // sTripTKHangTon
+            // 
+            this.sTripTKHangTon.Name = "sTripTKHangTon";
+            this.sTripTKHangTon.Size = new System.Drawing.Size(247, 30);
+            this.sTripTKHangTon.Text = "Thống kê hàng tồn";
+            this.sTripTKHangTon.Click += new System.EventHandler(this.sTripTKHangTon_Click);
             // 
             // frmMain
             // 
@@ -151,5 +171,7 @@
         private System.Windows.Forms.ToolStripMenuItem danhMụcMenuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tStripMenu;
         private System.Windows.Forms.ToolStripMenuItem nghiệpVụToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tStripNhapHang;
+        private System.Windows.Forms.ToolStripMenuItem sTripTKHangTon;
     }
 }

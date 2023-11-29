@@ -78,9 +78,12 @@ namespace AppQuanLyQuanCafe
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string masp = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            bll_menu.xoaSPMenu(masp);
-            loadDataGridView();
+            if (MessageBox.Show("Bạn có muốn xoá không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes && !bll_menu.KiemTraKhoaNgoaiMenu(txtMaSP.Text))
+            {
+                string masp = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                bll_menu.xoaSPMenu(masp);
+                loadDataGridView();
+            }
         }
 
         private void btnChonAnh_Click(object sender, EventArgs e)
@@ -157,6 +160,12 @@ namespace AppQuanLyQuanCafe
             if (!ktPicSanPham)
             {
                 MessageBox.Show("Vui lòng chọn ảnh cho sản phẩm");
+                return false;
+            }
+            if (bll_menu.KiemTraKhoaChinhMenu(txtMaSP.Text))
+            {
+                MessageBox.Show("Sản phẩm đã tồn tại!");
+                txtMaSP.Focus();
                 return false;
             }
             return true;

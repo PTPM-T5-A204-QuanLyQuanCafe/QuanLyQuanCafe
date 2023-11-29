@@ -57,5 +57,14 @@ namespace BLL_DAL
             sp.DVT = m.DVT;
             ql.SubmitChanges();
         }
+        public bool KiemTraKhoaChinhMenu(string maSP)
+        {
+            return ql.MENUs.Any(m => m.MASP == maSP);
+        }
+
+        public bool KiemTraKhoaNgoaiMenu(string maSP)
+        {
+            return ql.CTHOADONs.Any(ct => ct.MASP == maSP) || ql.CHITIETPHEUNHAPs.Any(ct => ct.MAHANG == maSP);
+        }
     }
 }

@@ -49,9 +49,12 @@ namespace AppQuanLyQuanCafe
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string mahang = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            bll_kho.xoaKhoHang(mahang);
-            loadDataGribView();
+            if (MessageBox.Show("Bạn có muốn xoá không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                string mahang = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                bll_kho.xoaKhoHang(mahang);
+                loadDataGribView();
+            }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -125,7 +128,13 @@ namespace AppQuanLyQuanCafe
                 MessageBox.Show("Số lượng hàng hóa không được để trống");
                 txtSoLuong.Focus();
                 return false;
-            }        
+            }
+            if (bll_kho.KiemTraKhoaChinhKhoHang(txtMaHang.Text))
+            {
+                MessageBox.Show("Hàng đã tồn tại");
+                txtMaHang.Focus();
+                return false;
+            }     
             return true;
         }
 

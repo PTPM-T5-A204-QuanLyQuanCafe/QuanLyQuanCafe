@@ -41,9 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL_DAL_Ban.cs" />
+    <Compile Include="BLL_DAL_ChiTietPhieuNhap.cs" />
     <Compile Include="BLL_DAL_Kho.cs" />
     <Compile Include="BLL_DAL_Menu.cs" />
+    <Compile Include="BLL_DAL_NCC.cs" />
     <Compile Include="BLL_DAL_NhanVien.cs" />
+    <Compile Include="BLL_DAL_PhieuNhap.cs" />
+    <Compile Include="DTO\ChiTietPhieuNhapDTO.cs" />
+    <Compile Include="DTO\HangTon.cs" />
     <Compile Include="DTO\MenuDTO.cs" />
     <Compile Include="DTO\NhanVienDTO.cs" />
     <Compile Include="MaHoaPassword.cs" />

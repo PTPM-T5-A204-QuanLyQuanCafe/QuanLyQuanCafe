@@ -36,6 +36,14 @@ namespace BLL_DAL
             ban.TINHTRANG = b.TINHTRANG;
             ql.SubmitChanges();
         }
+        public bool KiemTraKhoaChinhBan(string tenBan)
+        {
+            return ql.BANs.Any(b => b.TENBAN == tenBan);
+        }
 
+        public bool KiemTraKhoaNgoaiBan(string tenBan)
+        {
+            return ql.CHITIETPHIEUDATs.Any(ct => ct.TENBAN == tenBan);
+        }
     }
 }

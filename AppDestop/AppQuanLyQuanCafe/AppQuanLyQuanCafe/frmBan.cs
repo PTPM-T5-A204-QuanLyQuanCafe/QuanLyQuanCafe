@@ -59,9 +59,12 @@ namespace AppQuanLyQuanCafe
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            string tenban = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-            bll_ban.xoaBan(tenban);
-            loadDataGribView();
+            if (MessageBox.Show("Bạn có muốn xoá không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes && bll_ban.KiemTraKhoaNgoaiBan(txtTenBan.Text) != true)
+            {
+                string tenban = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                bll_ban.xoaBan(tenban);
+                loadDataGribView();
+            }
         }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
@@ -119,6 +122,12 @@ namespace AppQuanLyQuanCafe
                 return false;
             }
 
+            if (bll_ban.KiemTraKhoaChinhBan(txtTenBan.Text))
+            {
+                MessageBox.Show("Tên bàn đã tồn tại");
+                txtTenBan.Focus();
+                return false;
+            }
             return true;
         }
 

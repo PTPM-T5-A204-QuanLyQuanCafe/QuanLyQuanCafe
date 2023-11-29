@@ -61,7 +61,21 @@ namespace AppQuanLyQuanCafe
             {
                tStripNhanVien.Enabled = false;
                tStripMenu.Enabled = false;
+               tStripNhapHang.Enabled = false;
+               sTripTKHangTon.Enabled = false;
             }
+        }
+
+        private void tStripNhapHang_Click(object sender, EventArgs e)
+        {
+            frmNhapHang frm = new frmNhapHang();
+            frm.Show();
+        }
+
+        private void sTripTKHangTon_Click(object sender, EventArgs e)
+        {
+            frmThongKeHangTon frm = new frmThongKeHangTon();
+            frm.Show();
         }
     }
 }

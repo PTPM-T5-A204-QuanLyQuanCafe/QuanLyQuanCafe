@@ -16,6 +16,7 @@
       <Column Name="SODIENTHOAINCC" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
       <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="TONGTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TINHTRANG" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Association Name="PHIEUNHAP_CHITIETPHEUNHAP" Member="CHITIETPHEUNHAPs" ThisKey="MAPHIEU" OtherKey="MAPHIEU" Type="CHITIETPHEUNHAP" />
       <Association Name="NHACUNGCAP_PHIEUNHAP" Member="NHACUNGCAP" ThisKey="SODIENTHOAINCC" OtherKey="SODIENTHOAINCC" Type="NHACUNGCAP" IsForeignKey="true" />
       <Association Name="NHANVIEN_PHIEUNHAP" Member="NHANVIEN" ThisKey="SDT" OtherKey="SDT" Type="NHANVIEN" IsForeignKey="true" />
@@ -27,7 +28,8 @@
       <Column Name="TIEUDE" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="NGAYDANG" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="ANH" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Association Name="CONTENT_HEDING" Member="HEDINGs" ThisKey="MACT" OtherKey="MACT" Type="HEDING" />
+      <Column Name="MOTA" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="CONTENT_NOIDUNG" Member="NOIDUNGs" ThisKey="MACT" OtherKey="MACT" Type="NOIDUNG" />
     </Type>
   </Table>
   <Table Name="dbo.CTHOADON" Member="CTHOADONs">
@@ -52,6 +54,7 @@
     <Type Name="CHITIETPHEUNHAP">
       <Column Name="MAPHIEU" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MAHANG" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="GIA" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="PHIEUNHAP_CHITIETPHEUNHAP" Member="PHIEUNHAP" ThisKey="MAPHIEU" OtherKey="MAPHIEU" Type="PHIEUNHAP" IsForeignKey="true" />
       <Association Name="KHOHANG_CHITIETPHEUNHAP" Member="KHOHANG" ThisKey="MAHANG" OtherKey="MAHANG" Type="KHOHANG" IsForeignKey="true" />
@@ -63,15 +66,6 @@
       <Column Name="TENBAN" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Association Name="BAN_CHITIETPHIEUDAT" Member="BAN" ThisKey="TENBAN" OtherKey="TENBAN" Type="BAN" IsForeignKey="true" />
       <Association Name="PHIEUDATBAN_CHITIETPHIEUDAT" Member="PHIEUDATBAN" ThisKey="MAPHIEUDAT" OtherKey="MAPHIEUDAT" Type="PHIEUDATBAN" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.HEDING" Member="HEDINGs">
-    <Type Name="HEDING">
-      <Column Name="MA" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="MACT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="TEN" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Association Name="HEDING_NOIDUNG" Member="NOIDUNGs" ThisKey="MA" OtherKey="MA" Type="NOIDUNG" />
-      <Association Name="CONTENT_HEDING" Member="CONTENT" ThisKey="MACT" OtherKey="MACT" Type="CONTENT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.HOADON" Member="HOADONs">
@@ -125,11 +119,12 @@
   </Table>
   <Table Name="dbo.NOIDUNG" Member="NOIDUNGs">
     <Type Name="NOIDUNG">
-      <Column Name="MA" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="MACT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="MAND" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="NOIDUNG" Member="NOIDUNG1" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="NOIDUNG" Member="NOIDUNG1" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ANH" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Association Name="HEDING_NOIDUNG" Member="HEDING" ThisKey="MA" OtherKey="MA" Type="HEDING" IsForeignKey="true" />
+      <Column Name="HEADING" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="CONTENT_NOIDUNG" Member="CONTENT" ThisKey="MACT" OtherKey="MACT" Type="CONTENT" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.NHACUNGCAP" Member="NHACUNGCAPs">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL_DAL.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -39,6 +40,52 @@ namespace BLL_DAL
             hang.TINHTRANG = k.TINHTRANG;
             ql.SubmitChanges();
         }
+        public string TenHang(string mahang)
+        {
+            KHOHANG k = ql.KHOHANGs.Where(t => t.MAHANG == mahang).FirstOrDefault();
+            return k.TENHANG;
+        }
+        public List<HangTon> TimKiemMaHang(string mahang)
+        {
+            List<HangTon> hang = ql.KHOHANGs.Where(t => t.MAHANG.Contains(mahang))
+                .Select(t => new HangTon
+                {
+                    MAHANG = t.MAHANG,
+                    TENHANG = t.TENHANG,
+                    SOLUONG = t.SOLUONG
+                }).ToList();
+            return hang;
+        }
+        public List<HangTon> TimKiemTenHang(string tenhang)
+        {
+            List<HangTon> hang = ql.KHOHANGs.Where(t => t.TENHANG.Contains(tenhang))
+                .Select(t => new HangTon
+                {
+                    MAHANG = t.MAHANG,
+                    TENHANG = t.TENHANG,
+                    SOLUONG = t.SOLUONG
+                }).ToList();
+            return hang;
+        }
+        public List<HangTon> TimKiemSoLuongHang(int soluong)
+        {
+            List<HangTon> hang = ql.KHOHANGs.Where(t => t.SOLUONG <= soluong)
+                .Select(t => new HangTon
+                {
+                    MAHANG = t.MAHANG,
+                    TENHANG = t.TENHANG,
+                    SOLUONG = t.SOLUONG
+                }).ToList();
+            return hang;
+        }
+        public bool KiemTraKhoaChinhKhoHang(string maHang)
+        {
+            return ql.KHOHANGs.Any(kh => kh.MAHANG == maHang);
+        }
 
+        public bool KiemTraKhoaNgoaiKhoHang(string maHang)
+        {
+            return ql.CHITIETPHEUNHAPs.Any(ct => ct.MAHANG == maHang) || ql.MENUs.Any(m => m.MASP == maHang);
+        }
     }
 }

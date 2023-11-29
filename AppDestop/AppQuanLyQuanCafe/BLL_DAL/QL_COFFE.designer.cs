@@ -51,9 +51,6 @@ namespace BLL_DAL
     partial void InsertCHITIETPHIEUDAT(CHITIETPHIEUDAT instance);
     partial void UpdateCHITIETPHIEUDAT(CHITIETPHIEUDAT instance);
     partial void DeleteCHITIETPHIEUDAT(CHITIETPHIEUDAT instance);
-    partial void InsertHEDING(HEDING instance);
-    partial void UpdateHEDING(HEDING instance);
-    partial void DeleteHEDING(HEDING instance);
     partial void InsertHOADON(HOADON instance);
     partial void UpdateHOADON(HOADON instance);
     partial void DeleteHOADON(HOADON instance);
@@ -169,14 +166,6 @@ namespace BLL_DAL
 			get
 			{
 				return this.GetTable<CHITIETPHIEUDAT>();
-			}
-		}
-		
-		public System.Data.Linq.Table<HEDING> HEDINGs
-		{
-			get
-			{
-				return this.GetTable<HEDING>();
 			}
 		}
 		
@@ -443,6 +432,8 @@ namespace BLL_DAL
 		
 		private System.Nullable<double> _TONGTIEN;
 		
+		private System.Nullable<bool> _TINHTRANG;
+		
 		private EntitySet<CHITIETPHEUNHAP> _CHITIETPHEUNHAPs;
 		
 		private EntityRef<NHACUNGCAP> _NHACUNGCAP;
@@ -463,6 +454,8 @@ namespace BLL_DAL
     partial void OnNGAYLAPChanged();
     partial void OnTONGTIENChanging(System.Nullable<double> value);
     partial void OnTONGTIENChanged();
+    partial void OnTINHTRANGChanging(System.Nullable<bool> value);
+    partial void OnTINHTRANGChanged();
     #endregion
 		
 		public PHIEUNHAP()
@@ -577,6 +570,26 @@ namespace BLL_DAL
 					this._TONGTIEN = value;
 					this.SendPropertyChanged("TONGTIEN");
 					this.OnTONGTIENChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TINHTRANG", DbType="Bit")]
+		public System.Nullable<bool> TINHTRANG
+		{
+			get
+			{
+				return this._TINHTRANG;
+			}
+			set
+			{
+				if ((this._TINHTRANG != value))
+				{
+					this.OnTINHTRANGChanging(value);
+					this.SendPropertyChanging();
+					this._TINHTRANG = value;
+					this.SendPropertyChanged("TINHTRANG");
+					this.OnTINHTRANGChanged();
 				}
 			}
 		}
@@ -709,7 +722,9 @@ namespace BLL_DAL
 		
 		private string _ANH;
 		
-		private EntitySet<HEDING> _HEDINGs;
+		private string _MOTA;
+		
+		private EntitySet<NOIDUNG> _NOIDUNGs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -723,11 +738,13 @@ namespace BLL_DAL
     partial void OnNGAYDANGChanged();
     partial void OnANHChanging(string value);
     partial void OnANHChanged();
+    partial void OnMOTAChanging(string value);
+    partial void OnMOTAChanged();
     #endregion
 		
 		public CONTENT()
 		{
-			this._HEDINGs = new EntitySet<HEDING>(new Action<HEDING>(this.attach_HEDINGs), new Action<HEDING>(this.detach_HEDINGs));
+			this._NOIDUNGs = new EntitySet<NOIDUNG>(new Action<NOIDUNG>(this.attach_NOIDUNGs), new Action<NOIDUNG>(this.detach_NOIDUNGs));
 			OnCreated();
 		}
 		
@@ -811,16 +828,36 @@ namespace BLL_DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CONTENT_HEDING", Storage="_HEDINGs", ThisKey="MACT", OtherKey="MACT")]
-		public EntitySet<HEDING> HEDINGs
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MOTA", DbType="NVarChar(500)")]
+		public string MOTA
 		{
 			get
 			{
-				return this._HEDINGs;
+				return this._MOTA;
 			}
 			set
 			{
-				this._HEDINGs.Assign(value);
+				if ((this._MOTA != value))
+				{
+					this.OnMOTAChanging(value);
+					this.SendPropertyChanging();
+					this._MOTA = value;
+					this.SendPropertyChanged("MOTA");
+					this.OnMOTAChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CONTENT_NOIDUNG", Storage="_NOIDUNGs", ThisKey="MACT", OtherKey="MACT")]
+		public EntitySet<NOIDUNG> NOIDUNGs
+		{
+			get
+			{
+				return this._NOIDUNGs;
+			}
+			set
+			{
+				this._NOIDUNGs.Assign(value);
 			}
 		}
 		
@@ -844,13 +881,13 @@ namespace BLL_DAL
 			}
 		}
 		
-		private void attach_HEDINGs(HEDING entity)
+		private void attach_NOIDUNGs(NOIDUNG entity)
 		{
 			this.SendPropertyChanging();
 			entity.CONTENT = this;
 		}
 		
-		private void detach_HEDINGs(HEDING entity)
+		private void detach_NOIDUNGs(NOIDUNG entity)
 		{
 			this.SendPropertyChanging();
 			entity.CONTENT = null;
@@ -1251,6 +1288,8 @@ namespace BLL_DAL
 		
 		private string _MAHANG;
 		
+		private System.Nullable<double> _GIA;
+		
 		private System.Nullable<int> _SOLUONG;
 		
 		private EntityRef<PHIEUNHAP> _PHIEUNHAP;
@@ -1265,6 +1304,8 @@ namespace BLL_DAL
     partial void OnMAPHIEUChanged();
     partial void OnMAHANGChanging(string value);
     partial void OnMAHANGChanged();
+    partial void OnGIAChanging(System.Nullable<double> value);
+    partial void OnGIAChanged();
     partial void OnSOLUONGChanging(System.Nullable<int> value);
     partial void OnSOLUONGChanged();
     #endregion
@@ -1320,6 +1361,26 @@ namespace BLL_DAL
 					this._MAHANG = value;
 					this.SendPropertyChanged("MAHANG");
 					this.OnMAHANGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GIA", DbType="Float")]
+		public System.Nullable<double> GIA
+		{
+			get
+			{
+				return this._GIA;
+			}
+			set
+			{
+				if ((this._GIA != value))
+				{
+					this.OnGIAChanging(value);
+					this.SendPropertyChanging();
+					this._GIA = value;
+					this.SendPropertyChanged("GIA");
+					this.OnGIAChanged();
 				}
 			}
 		}
@@ -1598,185 +1659,6 @@ namespace BLL_DAL
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.HEDING")]
-	public partial class HEDING : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _MA;
-		
-		private string _MACT;
-		
-		private string _TEN;
-		
-		private EntitySet<NOIDUNG> _NOIDUNGs;
-		
-		private EntityRef<CONTENT> _CONTENT;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMAChanging(string value);
-    partial void OnMAChanged();
-    partial void OnMACTChanging(string value);
-    partial void OnMACTChanged();
-    partial void OnTENChanging(string value);
-    partial void OnTENChanged();
-    #endregion
-		
-		public HEDING()
-		{
-			this._NOIDUNGs = new EntitySet<NOIDUNG>(new Action<NOIDUNG>(this.attach_NOIDUNGs), new Action<NOIDUNG>(this.detach_NOIDUNGs));
-			this._CONTENT = default(EntityRef<CONTENT>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MA
-		{
-			get
-			{
-				return this._MA;
-			}
-			set
-			{
-				if ((this._MA != value))
-				{
-					this.OnMAChanging(value);
-					this.SendPropertyChanging();
-					this._MA = value;
-					this.SendPropertyChanged("MA");
-					this.OnMAChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACT", DbType="VarChar(10)")]
-		public string MACT
-		{
-			get
-			{
-				return this._MACT;
-			}
-			set
-			{
-				if ((this._MACT != value))
-				{
-					if (this._CONTENT.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMACTChanging(value);
-					this.SendPropertyChanging();
-					this._MACT = value;
-					this.SendPropertyChanged("MACT");
-					this.OnMACTChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEN", DbType="NVarChar(100)")]
-		public string TEN
-		{
-			get
-			{
-				return this._TEN;
-			}
-			set
-			{
-				if ((this._TEN != value))
-				{
-					this.OnTENChanging(value);
-					this.SendPropertyChanging();
-					this._TEN = value;
-					this.SendPropertyChanged("TEN");
-					this.OnTENChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HEDING_NOIDUNG", Storage="_NOIDUNGs", ThisKey="MA", OtherKey="MA")]
-		public EntitySet<NOIDUNG> NOIDUNGs
-		{
-			get
-			{
-				return this._NOIDUNGs;
-			}
-			set
-			{
-				this._NOIDUNGs.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CONTENT_HEDING", Storage="_CONTENT", ThisKey="MACT", OtherKey="MACT", IsForeignKey=true)]
-		public CONTENT CONTENT
-		{
-			get
-			{
-				return this._CONTENT.Entity;
-			}
-			set
-			{
-				CONTENT previousValue = this._CONTENT.Entity;
-				if (((previousValue != value) 
-							|| (this._CONTENT.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._CONTENT.Entity = null;
-						previousValue.HEDINGs.Remove(this);
-					}
-					this._CONTENT.Entity = value;
-					if ((value != null))
-					{
-						value.HEDINGs.Add(this);
-						this._MACT = value.MACT;
-					}
-					else
-					{
-						this._MACT = default(string);
-					}
-					this.SendPropertyChanged("CONTENT");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_NOIDUNGs(NOIDUNG entity)
-		{
-			this.SendPropertyChanging();
-			entity.HEDING = this;
-		}
-		
-		private void detach_NOIDUNGs(NOIDUNG entity)
-		{
-			this.SendPropertyChanging();
-			entity.HEDING = null;
 		}
 	}
 	
@@ -2784,7 +2666,7 @@ namespace BLL_DAL
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MA;
+		private string _MACT;
 		
 		private string _MAND;
 		
@@ -2792,48 +2674,52 @@ namespace BLL_DAL
 		
 		private string _ANH;
 		
-		private EntityRef<HEDING> _HEDING;
+		private string _HEADING;
+		
+		private EntityRef<CONTENT> _CONTENT;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMAChanging(string value);
-    partial void OnMAChanged();
+    partial void OnMACTChanging(string value);
+    partial void OnMACTChanged();
     partial void OnMANDChanging(string value);
     partial void OnMANDChanged();
     partial void OnNOIDUNG1Changing(string value);
     partial void OnNOIDUNG1Changed();
     partial void OnANHChanging(string value);
     partial void OnANHChanged();
+    partial void OnHEADINGChanging(string value);
+    partial void OnHEADINGChanged();
     #endregion
 		
 		public NOIDUNG()
 		{
-			this._HEDING = default(EntityRef<HEDING>);
+			this._CONTENT = default(EntityRef<CONTENT>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MA", DbType="VarChar(10)")]
-		public string MA
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MACT", DbType="VarChar(10)")]
+		public string MACT
 		{
 			get
 			{
-				return this._MA;
+				return this._MACT;
 			}
 			set
 			{
-				if ((this._MA != value))
+				if ((this._MACT != value))
 				{
-					if (this._HEDING.HasLoadedOrAssignedValue)
+					if (this._CONTENT.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnMAChanging(value);
+					this.OnMACTChanging(value);
 					this.SendPropertyChanging();
-					this._MA = value;
-					this.SendPropertyChanged("MA");
-					this.OnMAChanged();
+					this._MACT = value;
+					this.SendPropertyChanged("MACT");
+					this.OnMACTChanged();
 				}
 			}
 		}
@@ -2858,7 +2744,7 @@ namespace BLL_DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="NOIDUNG", Storage="_NOIDUNG1", DbType="NVarChar(500)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="NOIDUNG", Storage="_NOIDUNG1", DbType="NVarChar(MAX)")]
 		public string NOIDUNG1
 		{
 			get
@@ -2898,36 +2784,56 @@ namespace BLL_DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HEDING_NOIDUNG", Storage="_HEDING", ThisKey="MA", OtherKey="MA", IsForeignKey=true)]
-		public HEDING HEDING
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HEADING", DbType="NVarChar(100)")]
+		public string HEADING
 		{
 			get
 			{
-				return this._HEDING.Entity;
+				return this._HEADING;
 			}
 			set
 			{
-				HEDING previousValue = this._HEDING.Entity;
+				if ((this._HEADING != value))
+				{
+					this.OnHEADINGChanging(value);
+					this.SendPropertyChanging();
+					this._HEADING = value;
+					this.SendPropertyChanged("HEADING");
+					this.OnHEADINGChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="CONTENT_NOIDUNG", Storage="_CONTENT", ThisKey="MACT", OtherKey="MACT", IsForeignKey=true)]
+		public CONTENT CONTENT
+		{
+			get
+			{
+				return this._CONTENT.Entity;
+			}
+			set
+			{
+				CONTENT previousValue = this._CONTENT.Entity;
 				if (((previousValue != value) 
-							|| (this._HEDING.HasLoadedOrAssignedValue == false)))
+							|| (this._CONTENT.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._HEDING.Entity = null;
+						this._CONTENT.Entity = null;
 						previousValue.NOIDUNGs.Remove(this);
 					}
-					this._HEDING.Entity = value;
+					this._CONTENT.Entity = value;
 					if ((value != null))
 					{
 						value.NOIDUNGs.Add(this);
-						this._MA = value.MA;
+						this._MACT = value.MACT;
 					}
 					else
 					{
-						this._MA = default(string);
+						this._MACT = default(string);
 					}
-					this.SendPropertyChanged("HEDING");
+					this.SendPropertyChanged("CONTENT");
 				}
 			}
 		}
