@@ -51,6 +51,7 @@
             this.cbbTenLoai = new System.Windows.Forms.ComboBox();
             this.txtGia = new Control.txtChiNhapSo();
             this.txtSoLuong = new Control.txtChiNhapSo();
+            this.btnTaoMa = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSanPham)).BeginInit();
             this.SuspendLayout();
@@ -153,7 +154,7 @@
             // 
             this.txtMaSP.Location = new System.Drawing.Point(146, 30);
             this.txtMaSP.Name = "txtMaSP";
-            this.txtMaSP.Size = new System.Drawing.Size(231, 26);
+            this.txtMaSP.Size = new System.Drawing.Size(111, 26);
             this.txtMaSP.TabIndex = 1;
             // 
             // txtTenSP
@@ -282,12 +283,23 @@
             this.txtSoLuong.Size = new System.Drawing.Size(231, 26);
             this.txtSoLuong.TabIndex = 6;
             // 
+            // btnTaoMa
+            // 
+            this.btnTaoMa.Location = new System.Drawing.Point(263, 27);
+            this.btnTaoMa.Name = "btnTaoMa";
+            this.btnTaoMa.Size = new System.Drawing.Size(104, 35);
+            this.btnTaoMa.TabIndex = 15;
+            this.btnTaoMa.Text = "Tạo mã";
+            this.btnTaoMa.UseVisualStyleBackColor = true;
+            this.btnTaoMa.Click += new System.EventHandler(this.btnTaoMa_Click);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AppQuanLyQuanCafe.Properties.Resources.background1;
             this.ClientSize = new System.Drawing.Size(1106, 577);
+            this.Controls.Add(this.btnTaoMa);
             this.Controls.Add(this.txtSoLuong);
             this.Controls.Add(this.cbbTinhTrang);
             this.Controls.Add(this.txtGia);
@@ -347,5 +359,6 @@
         private System.Windows.Forms.ComboBox cbbTenLoai;
         private Control.txtChiNhapSo txtGia;
         private Control.txtChiNhapSo txtSoLuong;
+        private System.Windows.Forms.Button btnTaoMa;
     }
 }

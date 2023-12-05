@@ -25,6 +25,7 @@ namespace AppQuanLyQuanCafe
 
         private void frmNhapHang_Load(object sender, EventArgs e)
         {
+            CenterToScreen();
             loadCBB();
             txtMaPhieu.Text = bll_phieunhap.TaoMaPhieuNhap();
             loadDataGridView();
@@ -62,7 +63,7 @@ namespace AppQuanLyQuanCafe
                 ct.GIA = float.Parse(txtGia.Text);
                 ct.SOLUONG = int.Parse(txtSoLuong.Text);
                 bll_chitietPN.themChiTietPhieuNhap(ct);
-                luuTien(maphieu);
+                luuTienThem(maphieu);
                 loadDataGridView();
             }
             else
@@ -88,7 +89,7 @@ namespace AppQuanLyQuanCafe
                     ct.SOLUONG = int.Parse(txtSoLuong.Text);
                     bll_chitietPN.suaChiTietPhieuNhap(maphieu, mahang, ct);
                 }
-                luuTien(maphieu);
+                luuTienThem(maphieu);
                 loadDataGridView();
             }
         }
@@ -102,6 +103,7 @@ namespace AppQuanLyQuanCafe
             }
             if (MessageBox.Show("Bạn có muốn xoá không?", "Xác nhận xoá", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                luuTienXoa(txtMaPhieu.Text);
                 bll_chitietPN.xoaChiTietPhieuNhap(txtMaPhieu.Text, txtMaHang.Text);
                 loadDataGridView();
             }
@@ -194,12 +196,21 @@ namespace AppQuanLyQuanCafe
                 }
             }
         }
-        public void luuTien(string maphieu)
+        public void luuTienThem(string maphieu)
         {
             float tong = float.Parse(txtTongTien.Text);
             float gia = float.Parse(txtGia.Text);
             float sl = int.Parse(txtSoLuong.Text);
             tong = tong + gia * sl;
+            txtTongTien.Text = tong.ToString();
+            bll_phieunhap.luuTongTien(maphieu, tong);
+        }
+        public void luuTienXoa(string maphieu)
+        {
+            float tong = float.Parse(txtTongTien.Text);
+            float gia = float.Parse(txtGia.Text);
+            float sl = int.Parse(txtSoLuong.Text);
+            tong = tong - gia * sl;
             txtTongTien.Text = tong.ToString();
             bll_phieunhap.luuTongTien(maphieu, tong);
         }

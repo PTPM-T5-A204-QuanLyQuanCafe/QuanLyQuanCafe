@@ -42,9 +42,6 @@ namespace BLL_DAL
     partial void InsertCTHOADON(CTHOADON instance);
     partial void UpdateCTHOADON(CTHOADON instance);
     partial void DeleteCTHOADON(CTHOADON instance);
-    partial void InsertCHITIETBAN(CHITIETBAN instance);
-    partial void UpdateCHITIETBAN(CHITIETBAN instance);
-    partial void DeleteCHITIETBAN(CHITIETBAN instance);
     partial void InsertCHITIETPHEUNHAP(CHITIETPHEUNHAP instance);
     partial void UpdateCHITIETPHEUNHAP(CHITIETPHEUNHAP instance);
     partial void DeleteCHITIETPHEUNHAP(CHITIETPHEUNHAP instance);
@@ -142,14 +139,6 @@ namespace BLL_DAL
 			get
 			{
 				return this.GetTable<CTHOADON>();
-			}
-		}
-		
-		public System.Data.Linq.Table<CHITIETBAN> CHITIETBANs
-		{
-			get
-			{
-				return this.GetTable<CHITIETBAN>();
 			}
 		}
 		
@@ -262,9 +251,9 @@ namespace BLL_DAL
 		
 		private string _TINHTRANG;
 		
-		private EntitySet<CHITIETBAN> _CHITIETBANs;
-		
 		private EntitySet<CHITIETPHIEUDAT> _CHITIETPHIEUDATs;
+		
+		private EntitySet<HOADON> _HOADONs;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -280,8 +269,8 @@ namespace BLL_DAL
 		
 		public BAN()
 		{
-			this._CHITIETBANs = new EntitySet<CHITIETBAN>(new Action<CHITIETBAN>(this.attach_CHITIETBANs), new Action<CHITIETBAN>(this.detach_CHITIETBANs));
 			this._CHITIETPHIEUDATs = new EntitySet<CHITIETPHIEUDAT>(new Action<CHITIETPHIEUDAT>(this.attach_CHITIETPHIEUDATs), new Action<CHITIETPHIEUDAT>(this.detach_CHITIETPHIEUDATs));
+			this._HOADONs = new EntitySet<HOADON>(new Action<HOADON>(this.attach_HOADONs), new Action<HOADON>(this.detach_HOADONs));
 			OnCreated();
 		}
 		
@@ -345,19 +334,6 @@ namespace BLL_DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BAN_CHITIETBAN", Storage="_CHITIETBANs", ThisKey="TENBAN", OtherKey="TENBAN")]
-		public EntitySet<CHITIETBAN> CHITIETBANs
-		{
-			get
-			{
-				return this._CHITIETBANs;
-			}
-			set
-			{
-				this._CHITIETBANs.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BAN_CHITIETPHIEUDAT", Storage="_CHITIETPHIEUDATs", ThisKey="TENBAN", OtherKey="TENBAN")]
 		public EntitySet<CHITIETPHIEUDAT> CHITIETPHIEUDATs
 		{
@@ -368,6 +344,19 @@ namespace BLL_DAL
 			set
 			{
 				this._CHITIETPHIEUDATs.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BAN_HOADON", Storage="_HOADONs", ThisKey="TENBAN", OtherKey="TENBAN")]
+		public EntitySet<HOADON> HOADONs
+		{
+			get
+			{
+				return this._HOADONs;
+			}
+			set
+			{
+				this._HOADONs.Assign(value);
 			}
 		}
 		
@@ -391,18 +380,6 @@ namespace BLL_DAL
 			}
 		}
 		
-		private void attach_CHITIETBANs(CHITIETBAN entity)
-		{
-			this.SendPropertyChanging();
-			entity.BAN = this;
-		}
-		
-		private void detach_CHITIETBANs(CHITIETBAN entity)
-		{
-			this.SendPropertyChanging();
-			entity.BAN = null;
-		}
-		
 		private void attach_CHITIETPHIEUDATs(CHITIETPHIEUDAT entity)
 		{
 			this.SendPropertyChanging();
@@ -410,6 +387,18 @@ namespace BLL_DAL
 		}
 		
 		private void detach_CHITIETPHIEUDATs(CHITIETPHIEUDAT entity)
+		{
+			this.SendPropertyChanging();
+			entity.BAN = null;
+		}
+		
+		private void attach_HOADONs(HOADON entity)
+		{
+			this.SendPropertyChanging();
+			entity.BAN = this;
+		}
+		
+		private void detach_HOADONs(HOADON entity)
 		{
 			this.SendPropertyChanging();
 			entity.BAN = null;
@@ -933,7 +922,7 @@ namespace BLL_DAL
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="VarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -1085,174 +1074,6 @@ namespace BLL_DAL
 						this._MASP = default(string);
 					}
 					this.SendPropertyChanged("MENU");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CHITIETBAN")]
-	public partial class CHITIETBAN : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private string _MAHD;
-		
-		private string _TENBAN;
-		
-		private EntityRef<BAN> _BAN;
-		
-		private EntityRef<HOADON> _HOADON;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnMAHDChanging(string value);
-    partial void OnMAHDChanged();
-    partial void OnTENBANChanging(string value);
-    partial void OnTENBANChanged();
-    #endregion
-		
-		public CHITIETBAN()
-		{
-			this._BAN = default(EntityRef<BAN>);
-			this._HOADON = default(EntityRef<HOADON>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MAHD
-		{
-			get
-			{
-				return this._MAHD;
-			}
-			set
-			{
-				if ((this._MAHD != value))
-				{
-					if (this._HOADON.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnMAHDChanging(value);
-					this.SendPropertyChanging();
-					this._MAHD = value;
-					this.SendPropertyChanged("MAHD");
-					this.OnMAHDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENBAN", DbType="NVarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string TENBAN
-		{
-			get
-			{
-				return this._TENBAN;
-			}
-			set
-			{
-				if ((this._TENBAN != value))
-				{
-					if (this._BAN.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnTENBANChanging(value);
-					this.SendPropertyChanging();
-					this._TENBAN = value;
-					this.SendPropertyChanged("TENBAN");
-					this.OnTENBANChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BAN_CHITIETBAN", Storage="_BAN", ThisKey="TENBAN", OtherKey="TENBAN", IsForeignKey=true)]
-		public BAN BAN
-		{
-			get
-			{
-				return this._BAN.Entity;
-			}
-			set
-			{
-				BAN previousValue = this._BAN.Entity;
-				if (((previousValue != value) 
-							|| (this._BAN.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._BAN.Entity = null;
-						previousValue.CHITIETBANs.Remove(this);
-					}
-					this._BAN.Entity = value;
-					if ((value != null))
-					{
-						value.CHITIETBANs.Add(this);
-						this._TENBAN = value.TENBAN;
-					}
-					else
-					{
-						this._TENBAN = default(string);
-					}
-					this.SendPropertyChanged("BAN");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOADON_CHITIETBAN", Storage="_HOADON", ThisKey="MAHD", OtherKey="MAHD", IsForeignKey=true)]
-		public HOADON HOADON
-		{
-			get
-			{
-				return this._HOADON.Entity;
-			}
-			set
-			{
-				HOADON previousValue = this._HOADON.Entity;
-				if (((previousValue != value) 
-							|| (this._HOADON.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._HOADON.Entity = null;
-						previousValue.CHITIETBANs.Remove(this);
-					}
-					this._HOADON.Entity = value;
-					if ((value != null))
-					{
-						value.CHITIETBANs.Add(this);
-						this._MAHD = value.MAHD;
-					}
-					else
-					{
-						this._MAHD = default(string);
-					}
-					this.SendPropertyChanged("HOADON");
 				}
 			}
 		}
@@ -1670,6 +1491,8 @@ namespace BLL_DAL
 		
 		private string _MAHD;
 		
+		private string _TENBAN;
+		
 		private string _SDT;
 		
 		private System.Nullable<System.DateTime> _NGAYLAP;
@@ -1684,7 +1507,7 @@ namespace BLL_DAL
 		
 		private EntitySet<CTHOADON> _CTHOADONs;
 		
-		private EntitySet<CHITIETBAN> _CHITIETBANs;
+		private EntityRef<BAN> _BAN;
 		
 		private EntityRef<NHANVIEN> _NHANVIEN;
 		
@@ -1694,6 +1517,8 @@ namespace BLL_DAL
     partial void OnCreated();
     partial void OnMAHDChanging(string value);
     partial void OnMAHDChanged();
+    partial void OnTENBANChanging(string value);
+    partial void OnTENBANChanged();
     partial void OnSDTChanging(string value);
     partial void OnSDTChanged();
     partial void OnNGAYLAPChanging(System.Nullable<System.DateTime> value);
@@ -1711,12 +1536,12 @@ namespace BLL_DAL
 		public HOADON()
 		{
 			this._CTHOADONs = new EntitySet<CTHOADON>(new Action<CTHOADON>(this.attach_CTHOADONs), new Action<CTHOADON>(this.detach_CTHOADONs));
-			this._CHITIETBANs = new EntitySet<CHITIETBAN>(new Action<CHITIETBAN>(this.attach_CHITIETBANs), new Action<CHITIETBAN>(this.detach_CHITIETBANs));
+			this._BAN = default(EntityRef<BAN>);
 			this._NHANVIEN = default(EntityRef<NHANVIEN>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="VarChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MAHD", DbType="VarChar(20) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string MAHD
 		{
 			get
@@ -1732,6 +1557,30 @@ namespace BLL_DAL
 					this._MAHD = value;
 					this.SendPropertyChanged("MAHD");
 					this.OnMAHDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TENBAN", DbType="NVarChar(20) NOT NULL", CanBeNull=false)]
+		public string TENBAN
+		{
+			get
+			{
+				return this._TENBAN;
+			}
+			set
+			{
+				if ((this._TENBAN != value))
+				{
+					if (this._BAN.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnTENBANChanging(value);
+					this.SendPropertyChanging();
+					this._TENBAN = value;
+					this.SendPropertyChanged("TENBAN");
+					this.OnTENBANChanged();
 				}
 			}
 		}
@@ -1873,16 +1722,37 @@ namespace BLL_DAL
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="HOADON_CHITIETBAN", Storage="_CHITIETBANs", ThisKey="MAHD", OtherKey="MAHD")]
-		public EntitySet<CHITIETBAN> CHITIETBANs
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="BAN_HOADON", Storage="_BAN", ThisKey="TENBAN", OtherKey="TENBAN", IsForeignKey=true)]
+		public BAN BAN
 		{
 			get
 			{
-				return this._CHITIETBANs;
+				return this._BAN.Entity;
 			}
 			set
 			{
-				this._CHITIETBANs.Assign(value);
+				BAN previousValue = this._BAN.Entity;
+				if (((previousValue != value) 
+							|| (this._BAN.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._BAN.Entity = null;
+						previousValue.HOADONs.Remove(this);
+					}
+					this._BAN.Entity = value;
+					if ((value != null))
+					{
+						value.HOADONs.Add(this);
+						this._TENBAN = value.TENBAN;
+					}
+					else
+					{
+						this._TENBAN = default(string);
+					}
+					this.SendPropertyChanged("BAN");
+				}
 			}
 		}
 		
@@ -1947,18 +1817,6 @@ namespace BLL_DAL
 		}
 		
 		private void detach_CTHOADONs(CTHOADON entity)
-		{
-			this.SendPropertyChanging();
-			entity.HOADON = null;
-		}
-		
-		private void attach_CHITIETBANs(CHITIETBAN entity)
-		{
-			this.SendPropertyChanging();
-			entity.HOADON = this;
-		}
-		
-		private void detach_CHITIETBANs(CHITIETBAN entity)
 		{
 			this.SendPropertyChanging();
 			entity.HOADON = null;

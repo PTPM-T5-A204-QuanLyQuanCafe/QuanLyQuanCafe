@@ -5,8 +5,8 @@
       <Column Name="TENBAN" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SLMAX" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
-      <Association Name="BAN_CHITIETBAN" Member="CHITIETBANs" ThisKey="TENBAN" OtherKey="TENBAN" Type="CHITIETBAN" />
       <Association Name="BAN_CHITIETPHIEUDAT" Member="CHITIETPHIEUDATs" ThisKey="TENBAN" OtherKey="TENBAN" Type="CHITIETPHIEUDAT" />
+      <Association Name="BAN_HOADON" Member="HOADONs" ThisKey="TENBAN" OtherKey="TENBAN" Type="HOADON" />
     </Type>
   </Table>
   <Table Name="dbo.PHIEUNHAP" Member="PHIEUNHAPs">
@@ -34,20 +34,12 @@
   </Table>
   <Table Name="dbo.CTHOADON" Member="CTHOADONs">
     <Type Name="CTHOADON">
-      <Column Name="MAHD" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAHD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="MASP" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="SOLUONG" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SOTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Association Name="HOADON_CTHOADON" Member="HOADON" ThisKey="MAHD" OtherKey="MAHD" Type="HOADON" IsForeignKey="true" />
       <Association Name="MENU_CTHOADON" Member="MENU" ThisKey="MASP" OtherKey="MASP" Type="MENU" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.CHITIETBAN" Member="CHITIETBANs">
-    <Type Name="CHITIETBAN">
-      <Column Name="MAHD" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="TENBAN" Type="System.String" DbType="NVarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="BAN_CHITIETBAN" Member="BAN" ThisKey="TENBAN" OtherKey="TENBAN" Type="BAN" IsForeignKey="true" />
-      <Association Name="HOADON_CHITIETBAN" Member="HOADON" ThisKey="MAHD" OtherKey="MAHD" Type="HOADON" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.CHITIETPHEUNHAP" Member="CHITIETPHEUNHAPs">
@@ -70,7 +62,8 @@
   </Table>
   <Table Name="dbo.HOADON" Member="HOADONs">
     <Type Name="HOADON">
-      <Column Name="MAHD" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MAHD" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TENBAN" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="SDT" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="NGAYLAP" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="GIODEN" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -78,7 +71,7 @@
       <Column Name="TONGTIEN" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="TINHTRANG" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
       <Association Name="HOADON_CTHOADON" Member="CTHOADONs" ThisKey="MAHD" OtherKey="MAHD" Type="CTHOADON" />
-      <Association Name="HOADON_CHITIETBAN" Member="CHITIETBANs" ThisKey="MAHD" OtherKey="MAHD" Type="CHITIETBAN" />
+      <Association Name="BAN_HOADON" Member="BAN" ThisKey="TENBAN" OtherKey="TENBAN" Type="BAN" IsForeignKey="true" />
       <Association Name="NHANVIEN_HOADON" Member="NHANVIEN" ThisKey="SDT" OtherKey="SDT" Type="NHANVIEN" IsForeignKey="true" />
     </Type>
   </Table>

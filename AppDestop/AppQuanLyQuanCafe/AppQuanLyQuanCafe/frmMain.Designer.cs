@@ -38,6 +38,7 @@
             this.tStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.nghiệpVụToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tStripNhapHang = new System.Windows.Forms.ToolStripMenuItem();
+            this.bánHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thốngKêToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sTripTKHangTon = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
@@ -114,7 +115,8 @@
             // nghiệpVụToolStripMenuItem
             // 
             this.nghiệpVụToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tStripNhapHang});
+            this.tStripNhapHang,
+            this.bánHàngToolStripMenuItem});
             this.nghiệpVụToolStripMenuItem.Name = "nghiệpVụToolStripMenuItem";
             this.nghiệpVụToolStripMenuItem.Size = new System.Drawing.Size(106, 29);
             this.nghiệpVụToolStripMenuItem.Text = "Nghiệp vụ";
@@ -122,9 +124,16 @@
             // tStripNhapHang
             // 
             this.tStripNhapHang.Name = "tStripNhapHang";
-            this.tStripNhapHang.Size = new System.Drawing.Size(210, 30);
+            this.tStripNhapHang.Size = new System.Drawing.Size(184, 30);
             this.tStripNhapHang.Text = "Nhập hàng";
             this.tStripNhapHang.Click += new System.EventHandler(this.tStripNhapHang_Click);
+            // 
+            // bánHàngToolStripMenuItem
+            // 
+            this.bánHàngToolStripMenuItem.Name = "bánHàngToolStripMenuItem";
+            this.bánHàngToolStripMenuItem.Size = new System.Drawing.Size(184, 30);
+            this.bánHàngToolStripMenuItem.Text = "Bán hàng";
+            this.bánHàngToolStripMenuItem.Click += new System.EventHandler(this.bánHàngToolStripMenuItem_Click);
             // 
             // thốngKêToolStripMenuItem
             // 
@@ -151,6 +160,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
             this.Text = "Chương trình quản lý Coffe";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -173,5 +183,6 @@
         private System.Windows.Forms.ToolStripMenuItem nghiệpVụToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tStripNhapHang;
         private System.Windows.Forms.ToolStripMenuItem sTripTKHangTon;
+        private System.Windows.Forms.ToolStripMenuItem bánHàngToolStripMenuItem;
     }
 }

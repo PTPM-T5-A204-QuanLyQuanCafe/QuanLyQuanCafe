@@ -14,6 +14,17 @@ namespace BLL_DAL
         {
 
         }
+         public string TaoMaSanPham()
+         {
+             int soSPHienTai = ql.MENUs.Count() + 1;
+             string maSanPhamMoi = string.Format("SP{0:D3}", soSPHienTai);
+             while (KiemTraKhoaChinhMenu(maSanPhamMoi))
+             {               
+                soSPHienTai++;
+                maSanPhamMoi = string.Format("SP{0:D3}", soSPHienTai);
+             }
+             return maSanPhamMoi;
+         }
         public List<MenuDTO> loadDataMenu()
         {
             List<MenuDTO> lst = ql.MENUs.Select(t => new MenuDTO 

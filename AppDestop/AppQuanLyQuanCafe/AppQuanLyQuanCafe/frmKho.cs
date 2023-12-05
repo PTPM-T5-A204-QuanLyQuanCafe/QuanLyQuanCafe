@@ -92,12 +92,12 @@ namespace AppQuanLyQuanCafe
         }
         void lamMoi()
         {
+            txtMaHang.Text = bll_kho.TaoMaHangHoa();
             txtMaHang.Enabled = true;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             txtTenHang.Text = "";
             txtSoLuong.Text = "";
-            txtMaHang.Text = "";
             txtGia.Text = "";
             cbbDVT.SelectedIndex = 0;
             cbbTinhTrang.SelectedIndex = 0;

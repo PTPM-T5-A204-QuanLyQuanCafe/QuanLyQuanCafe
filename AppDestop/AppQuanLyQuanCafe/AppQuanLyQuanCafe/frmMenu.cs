@@ -203,6 +203,11 @@ namespace AppQuanLyQuanCafe
             }
         }
 
+        private void btnTaoMa_Click(object sender, EventArgs e)
+        {
+            txtMaSP.Text = bll_menu.TaoMaSanPham();
+        }
+
               
         
     }

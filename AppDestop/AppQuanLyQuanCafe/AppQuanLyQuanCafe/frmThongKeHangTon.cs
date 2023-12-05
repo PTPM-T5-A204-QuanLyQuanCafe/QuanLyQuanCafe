@@ -21,7 +21,7 @@ namespace AppQuanLyQuanCafe
 
         private void frmThongKeHangTon_Load(object sender, EventArgs e)
         {
-
+            CenterToScreen();
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)

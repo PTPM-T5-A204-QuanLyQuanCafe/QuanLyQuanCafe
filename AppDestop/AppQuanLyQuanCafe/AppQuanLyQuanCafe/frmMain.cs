@@ -77,5 +77,11 @@ namespace AppQuanLyQuanCafe
             frmThongKeHangTon frm = new frmThongKeHangTon();
             frm.Show();
         }
+
+        private void bánHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBanHang frm = new frmBanHang();
+            frm.Show();
+        }
     }
 }

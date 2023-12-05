@@ -59,6 +59,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackgroundImage = global::AppQuanLyQuanCafe.Properties.Resources.background1;
             this.groupBox1.Controls.Add(this.dateNgayLap);
             this.groupBox1.Controls.Add(this.cbbNhaCC);
             this.groupBox1.Controls.Add(this.label4);
@@ -93,6 +94,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(391, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 20);
@@ -102,6 +104,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(391, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 20);
@@ -127,6 +130,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(13, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 20);
@@ -136,6 +140,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Location = new System.Drawing.Point(13, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(118, 20);
@@ -144,6 +149,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackgroundImage = global::AppQuanLyQuanCafe.Properties.Resources.background1;
             this.groupBox2.Controls.Add(this.btnXoa);
             this.groupBox2.Controls.Add(this.btnLuuLai);
             this.groupBox2.Controls.Add(this.btnThemMoi);
@@ -225,6 +231,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Location = new System.Drawing.Point(502, 35);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 20);
@@ -234,6 +241,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Location = new System.Drawing.Point(294, 35);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 20);
@@ -243,6 +251,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Location = new System.Drawing.Point(18, 79);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 20);
@@ -252,6 +261,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Location = new System.Drawing.Point(18, 35);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 20);
@@ -291,6 +301,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::AppQuanLyQuanCafe.Properties.Resources.background1;
             this.ClientSize = new System.Drawing.Size(742, 561);
             this.Controls.Add(this.txtTongTien);
             this.Controls.Add(this.btnThoat);

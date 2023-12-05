@@ -14,6 +14,17 @@ namespace BLL_DAL
         {
 
         }
+         public string TaoMaHangHoa()
+         {
+             int soHangHoaHienTai = ql.KHOHANGs.Count() + 1;
+             string maHangHoaNhapMoi = string.Format("HH{0:D3}", soHangHoaHienTai);
+             while (KiemTraKhoaChinhKhoHang(maHangHoaNhapMoi))
+             {
+                 soHangHoaHienTai++;
+                 maHangHoaNhapMoi = string.Format("HH{0:D3}", soHangHoaHienTai);
+             }
+             return maHangHoaNhapMoi;
+         }
         public List<KHOHANG> loadDataKhoHang()
         {
             List<KHOHANG> lst = ql.KHOHANGs.Select(t => t).ToList();

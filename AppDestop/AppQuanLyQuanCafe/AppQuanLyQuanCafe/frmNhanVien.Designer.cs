@@ -64,7 +64,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(560, 635);
+            this.dataGridView1.Size = new System.Drawing.Size(755, 635);
             this.dataGridView1.TabIndex = 15;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -95,7 +95,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.groupBox1.Location = new System.Drawing.Point(592, 12);
+            this.groupBox1.Location = new System.Drawing.Point(773, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(356, 589);
             this.groupBox1.TabIndex = 1;
@@ -284,7 +284,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(810, 607);
+            this.btnThoat.Location = new System.Drawing.Point(1013, 610);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(101, 40);
             this.btnThoat.TabIndex = 14;
@@ -294,7 +294,7 @@
             // 
             // btnLammoi
             // 
-            this.btnLammoi.Location = new System.Drawing.Point(632, 607);
+            this.btnLammoi.Location = new System.Drawing.Point(876, 611);
             this.btnLammoi.Name = "btnLammoi";
             this.btnLammoi.Size = new System.Drawing.Size(94, 38);
             this.btnLammoi.TabIndex = 11;
@@ -307,7 +307,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::AppQuanLyQuanCafe.Properties.Resources.background1;
-            this.ClientSize = new System.Drawing.Size(960, 659);
+            this.ClientSize = new System.Drawing.Size(1141, 659);
             this.Controls.Add(this.btnLammoi);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnThoat);

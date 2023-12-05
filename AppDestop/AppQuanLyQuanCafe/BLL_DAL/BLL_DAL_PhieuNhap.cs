@@ -17,6 +17,11 @@ namespace BLL_DAL
         {
             int soPhieuNhapHienTai = ql.PHIEUNHAPs.Count() + 1;
             string maPhieuNhapMoi = string.Format("PN{0:D3}", soPhieuNhapHienTai);
+            while(KiemTraKhoaChinhMenu(maPhieuNhapMoi))
+            {
+                soPhieuNhapHienTai++;
+                maPhieuNhapMoi = string.Format("PN{0:D3}", soPhieuNhapHienTai);
+            }
             return maPhieuNhapMoi;
         }
         public List<PHIEUNHAP> loadDataPhieuNhap()
@@ -48,6 +53,10 @@ namespace BLL_DAL
             PHIEUNHAP pn = ql.PHIEUNHAPs.Where(t => t.MAPHIEU == maphieu).FirstOrDefault();
             pn.TONGTIEN = tongtien;
             ql.SubmitChanges();
+        }
+        public bool KiemTraKhoaChinhMenu(string maSP)
+        {
+            return ql.MENUs.Any(m => m.MASP == maSP);
         }
     }
 }
