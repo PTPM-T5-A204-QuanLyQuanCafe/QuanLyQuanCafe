@@ -2,8 +2,7 @@
 Thành viên nhóm:
   1. Nguyễn Tấn Thạo -2001200514(Nhóm trưởng)
   2. Lê Hoàng Công -2001207148
-  3. Lê Hoàng Nhất Thống -2001190840
-
+  
 Dự án:
 Tên dự án: Quản lý quán cà phê.
 
@@ -19,7 +18,7 @@ AI:Cảnh báo kiểm soát lưu lượng sản phẩm không phù hợp(Chống
 
 PHÂN CÔNG NHIỆM VỤ
 Nguyễn Tấn Thạo - Xây dựng web
-Lê Hoàng Công&Lê Hoàng Nhất Thống - Xây dựng app
+Lê Hoàng Công - Xây dựng app
 Đánh giá dự án:
 Ưu điểm của dự án:
 
